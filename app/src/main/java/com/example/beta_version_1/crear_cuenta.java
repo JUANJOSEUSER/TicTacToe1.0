@@ -169,7 +169,6 @@ generador random=new generador();
         );
     }
     else{
-            Toast.makeText(getApplicationContext(),"error en el formulario", Toast.LENGTH_SHORT ).show();
     }
 //
 

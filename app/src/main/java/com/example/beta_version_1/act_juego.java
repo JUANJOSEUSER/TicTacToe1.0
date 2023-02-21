@@ -145,6 +145,7 @@ ObjectAnimator animacion;
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         ArrayList<String> lista = new ArrayList<>();
+        ArrayList<String> colores = new ArrayList<>();
         for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas.length; j++) {
                 lista.add(casillas[i][j].getText().toString());
@@ -166,6 +167,7 @@ ObjectAnimator animacion;
         String puntos[]=savedInstanceState.getStringArray("puntos");
         jugador1.setText(puntos[0]);
         jugador2.setText(puntos[1]);
+
 
     }
 
@@ -235,10 +237,12 @@ ObjectAnimator animacion;
             }
 
         } else {
+            if(casilla.getText().toString().equals(" ")){
             casilla.setText(jugador);//mete la letra en la casilla elegida
             animacion(casilla);
             escritura_cambio_de_letras();//cambias de letra
             letra.setText(jugador);
+            }
             if (casilla.getText().toString().equals("X")){
                 casilla.setTextColor(defaul2);
             }else{
@@ -440,11 +444,18 @@ public void animacion(TextView a){
 
     public void recuperar_instancia(ArrayList<String> lista) {
         int aux = 0;
+        sacar_ref();
         for (int i = 0; i < lista.size(); i++) {
             for (int j = 0; j < casillas.length; j++) {
                 for (int k = 0; k < casillas.length; k++) {
                     if (lista.get(i) != null) {
                         casillas[j][k].setText(lista.get(i));
+
+                        if (casillas[j][k].getText().toString().equals("X")){
+                            casillas[j][k].setTextColor(defaul2);
+                        }else{
+                            casillas[j][k].setTextColor(defaul);
+                        }
                         i++;
                     }
 

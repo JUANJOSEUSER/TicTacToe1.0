@@ -13,15 +13,34 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class modo_juego extends AppCompatActivity {
     TextView intruccion;
     boolean aux = false;
+    FirebaseAuth firebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modo_juego);
         intruccion = findViewById(R.id.como_jugar);
+        firebase = FirebaseAuth.getInstance();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        mandar();
+        firebase.signOut();
+        onBackPressed();
+
+        return false;
+    }
+    public void mandar(){//cada vez que se inicia seccion se crea un xml donde guardaremos datos en memoria
+        SharedPreferences librito=getSharedPreferences("cuenta_informacio", Context.MODE_PRIVATE);//se coloca el nombre del xml y el context si quiere ser privado o de acceso restringido
+        SharedPreferences.Editor libro=librito.edit();//editor hace la funcion de poder escribir en el xml mandadole la clave y el valor
+            libro.putString("usuario","vacio");//mandamos los datos
+        libro.commit();
     }
 
     public void mandar_datos(String modo) {//cada vez que se inicia seccion se crea un xml donde guardaremos datos en memoria

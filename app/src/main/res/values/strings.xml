@@ -27,5 +27,6 @@
     <string name="aplicar">Aplicar</string>
     <string name="cancelar">Cancelar</string>
     <string name="lenguaje">Lenguaje</string>
+    <string name="cambio_color">Elegir color</string>
 
 </resources>

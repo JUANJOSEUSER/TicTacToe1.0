@@ -165,7 +165,6 @@ if (!Gmail.getText().toString().isEmpty()&&!contraseña.getText().toString().isE
                                         alertas.show(getFragmentManager(),"dialogo");
                                     }
                                 }catch (Exception e){
-                                    Toast.makeText(MainActivity.this, "fallo en la verifacion", Toast.LENGTH_SHORT).show();
                                 }
 
                             }else{
@@ -195,7 +194,7 @@ if (!Gmail.getText().toString().isEmpty()&&!contraseña.getText().toString().isE
                 if (task.isSuccessful()){
                     Toast.makeText(MainActivity.this, "has iniciado sesion", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(MainActivity.this, "error al activar tu cuenta", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
